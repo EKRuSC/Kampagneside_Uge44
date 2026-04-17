@@ -1,0 +1,46 @@
+/*----------|STYLING RESET|----------*/
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+/*----------+----------+----------*/
+
+body {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  /*|STYLING|*/
+  background-color: var(--colour_beige);
+}
+
+header {
+  padding: 1rlh 5vw;
+  /*|STYLING|*/
+  background-color: var(--colour_salmon);
+
+  nav {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+footer {
+  padding: 1rlh 5vw;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  /*|STYLING|*/
+  background-color: var(--colour_blue);
+  color: #fff;
+}
+
+main {
+  margin: 1rlh 5vw;
+  margin-bottom: 4rlh;
+  padding: 1rlh;
+  display: flex;
+  flex-direction: column;
+  gap: 2rlh;
+  /*|STYLING|*/
+  outline: 1px solid #07f;
+}

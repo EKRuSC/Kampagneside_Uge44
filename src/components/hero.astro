@@ -1,25 +1,35 @@
 <div class="hero">
   <div class="temp_img"></div>
   <div class="hero_info">
-    <h1>Hero-sektion: Overskrift</h1>
-    <h2>Hero-sektion: Underoverskrift</h2>
+    <h1>Uge 44<br />Fokus På Døden</h1>
+    <h2>Vi nedbryder tabuet - ét arrangement ad gangen.</h2>
   </div>
 </div>
 
-<!--+----------+----------+----------+----------+----------+----------+-->
+<!--+----------+----------+----------+----------+----------+-->
 
 <style>
   .hero {
-    aspect-ratio: 2/1;
+    margin: -1rlh;
+    margin-bottom: 0;
+    position: relative;
     .temp_img {
-      height: 100%;
-      width: 100%;
+      aspect-ratio: 2/1;
+      /*|STYLING|*/
+      background-color: #abc;
     }
     .hero_info {
       width: 50%;
-      margin: 5rlh;
-      position: relative;
-      top: calc(-100%);
+      padding: 2rlh;
+      display: flex;
+      flex-direction: column;
+      gap: 1rlh;
+      position: absolute;
+      top: 5rlh;
+      left: 5rlh;
+      /*|STYLING|*/
+      background-color: var(--colour_salmon);
+      border-radius: 2rlh;
     }
   }
 </style>
