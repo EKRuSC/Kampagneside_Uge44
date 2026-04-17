@@ -26,19 +26,95 @@ import Footer from "../components/footer.astro";
 
 <style>
   html {
+    /*----------+----------|CUSTOM STUFF|----------+----------*/
+    /*----------+----------|COLOURS|*/
+    * {
+      --colour_grey-1: #f7ede7;
+      --colour_grey-2: #ede4de;
+      --colour_grey-3: #cfc8c3;
+      --colour_grey-4: #a8a29f;
+      --colour_grey-5: #6b6663;
+      --colour_skin-1: #f7ede7;
+      --colour_skin-2: #f9d8cd;
+      --colour_skin-3: #fcc2af;
+      --colour_skin-4: #d3a191;
+      --colour_skin-5: #bb8a79;
+      --colour_orange-1: #eea77c;
+      --colour_orange-2: #d97c44;
+      --colour_orange-3: #f0620c;
+      --colour_orange-4: #d24f00;
+      --colour_orange-5: #a54002;
+      --colour_light-blue-1: #a3c2ff;
+      --colour_light-blue-2: #6e95e4;
+      --colour_light-blue-3: #4975cf;
+      --colour_light-blue-4: #215fdd;
+      --colour_light-blue-5: #0b4fd9;
+      --colour_dark-blue-1: #0b4fd9;
+      --colour_dark-blue-2: #3921e7;
+      --colour_dark-blue-3: #210bc0;
+      --colour_dark-blue-4: #211193;
+      --colour_dark-blue-5: #1f175b;
+    }
+    /*----------+----------|TEXT/FONTS|*/
+    * {
+      h1 {
+        font-size: 40px;
+        font-weight: bold;
+        line-height: 120%;
+      }
+      h2 {
+        font-size: 33px;
+        font-weight: light;
+        line-height: 150%;
+      }
+      h3 {
+        font-size: 25px;
+        font-weight: medium;
+        line-height: 150%;
+      }
+      p {
+        font-size: 16px;
+        font-weight: normal;
+        line-height: 150%;
+      }
+    }
+    /*----------+----------|LAYOUT|----------+----------*/
+    /*----------+----------|*ignore*|*/
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
-  }
-  body {
-    min-height: 100vh;
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-  }
-  main {
-    height: 100%;
-    padding: 2lh 5vw;
+    /*----------+----------|GENERAL|*/
+    body {
+      min-height: 100vh;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      background-color: var(--colour_skin-1);
+    }
+    main {
+      height: 100%;
+      padding: 2rlh 5vw;
+      display: flex;
+      flex-direction: column;
+      gap: 2rlh;
+      * {
+        padding: 1rlh;
+      }
+    }
+    /*----------+----------|COMPONENTS|*/
+    .nav_button {
+      padding: 0.5rlh 1rlh;
+      background-color: var(--colour_orange-1);
+      border-radius: 2rlh;
+    }
+    .hero {
+      .temp_img {
+        background-color: var(--colour_light-blue-1);
+      }
+      .hero_info {
+        background-color: var(--colour_orange-1);
+      }
+    }
   }
 </style>
