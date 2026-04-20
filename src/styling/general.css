@@ -38,9 +38,5 @@ main {
   margin: 1rlh 5vw;
   margin-bottom: 4rlh;
   padding: 1rlh;
-  display: flex;
-  flex-direction: column;
   gap: 2rlh;
-  /*|STYLING|*/
-  outline: 1px solid #07f;
 }
