@@ -1,0 +1,80 @@
+<section class="downloads">
+  <h2>Downloads</h2>
+  <div class="download-grid">
+    <div class="download-card">
+      <h3>Logo</h3>
+      <p>Download Uge 44 logo i forskellige formater (PNG, SVG).</p>
+      <a href="/downloads/uge44-logo.zip" class="btn btn-secondary">Hent logo</a>
+    </div>
+    <div class="download-card">
+      <h3>Grafik</h3>
+      <p>Download plakater, infografik og andet materiale.</p>
+      <a href="/downloads/uge44-grafik.zip" class="btn btn-secondary">Hent grafik</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .downloads {
+    padding: 2rem 1rem;
+    text-align: center;
+  }
+
+  .downloads h2 {
+    font-family: "Comfortaa", sans-serif;
+    font-size: 40px;
+    font-weight: 300;
+    margin-bottom: 2rem;
+  }
+
+  .download-grid {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .download-card {
+    background-color: var(--colour_salmon_2);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    width: 250px;
+    text-align: center;
+  }
+
+  .download-card h3 {
+    font-family: "Comfortaa", sans-serif;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .download-card p {
+    font-family: Arial, sans-serif;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+
+  .btn-secondary {
+    background: transparent;
+    border: 2px solid var(--colour_dark-blue_main);
+    color: var(--colour_dark-blue_main);
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.2s ease;
+  }
+
+  .btn-secondary:hover {
+    background: var(--colour_dark-blue_main);
+    color: white;
+  }
+
+  @media (max-width: 640px) {
+    .downloads h2 {
+      font-size: 32px;
+    }
+  }
+</style>
