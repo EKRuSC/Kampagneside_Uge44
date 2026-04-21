@@ -7,13 +7,15 @@
 </section>
 
 <style>
+  section {
+    padding: 0 5vw;
+  }
   .infobox {
-    width: 75%;
+    width: 100%;
     padding: 3rlh;
     justify-self: center;
     display: flex;
     flex-direction: column;
-    align-items: center;
     text-align: center;
     gap: 2rlh;
     /*|STYLING|*/
@@ -22,7 +24,7 @@
     background-image: url(../assets/graphics/uge44_speechbubble_plain.svg);
     background-size: 75%;
     background-repeat: no-repeat;
-    background-position: bottom 1rlh center;
+    background-position: center;
   }
   .decorative {
     margin-bottom: 2rlh;
@@ -31,5 +33,20 @@
     font-family: "Comfortaa";
     font-size: 40px;
     font-weight: 300;
+  }
+
+  @media screen and (width<=1000px) {
+    .infobox {
+      padding: calc(0.5rlh + 5vw);
+      gap: calc(1rlh + 2vw);
+      p,
+      .decorative,
+      h1 {
+        font-size: calc(70% + 4vw);
+      }
+      .decorative {
+        margin-bottom: 1rlh;
+      }
+    }
   }
 </style>

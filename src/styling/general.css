@@ -30,9 +30,9 @@ header {
 }
 
 footer {
-  padding: 1rlh 5vw;
+  padding: 2rlh 5vw;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: auto 1fr;
   /*|STYLING|*/
   background-color: var(--colour_dark-blue_main);
   color: #fff;
