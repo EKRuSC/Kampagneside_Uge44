@@ -1,6 +1,10 @@
 ---
+import "../styling/general.css"
+import "../styling/custom.css";
 import "../styling/events.css";
 import Page from "../layout/page.astro";
+import Kalender from "../components/kalender.astro";
+import EventList from "../components/eventList.astro";
 
 const url = "https://lrakcsmpnaswxsvnuhhg.supabase.co/rest/v1/uge44events";
 const key =
@@ -21,9 +25,17 @@ console.log("supaData", supaData);
 <Page>
   <main>
     <h1>Events</h1>
-    <section id="event_cards"></section>
-    <section id="calender">
-      <div id="temp_calender"></div>
+
+    <section id="event_cards">
+      <EventList/>
     </section>
+
+    <section id="calender">
+      <Kalender defaultMonth={9}/>
+    </section>
+
   </main>
 </Page>
+
+<style>
+ 
