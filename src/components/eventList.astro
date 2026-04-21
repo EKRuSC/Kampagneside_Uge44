@@ -1,10 +1,5 @@
 ---
-// eventList.astro
-// -----------------------------------------------
-// The <style> block has been removed from this component.
-// All visual styling now lives in your events.css.
-// CSS class names to add are listed at the bottom.
-// -----------------------------------------------
+
 
 const url = "https://lrakcsmpnaswxsvnuhhg.supabase.co/rest/v1/uge44events";
 const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxyYWtjc21wbmFzd3hzdm51aGhnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYyOTMxOTksImV4cCI6MjA5MTg2OTE5OX0.mqBbh4_zaPE1R-9IwUox3hln9OLr-Hhz9uWgOM-LVwE";
@@ -82,8 +77,9 @@ const events: SupabaseEvent[] = Array.isArray(allEvents) ? allEvents : [];
 
     container.innerHTML = '';
 
-    dayEvents.forEach((ev) => {
-      const card = document.createElement('div');
+     dayEvents.forEach((ev) => {
+       const card = document.createElement('a');
+      card.href = `/${encodeURIComponent(ev.name)}`;
       card.className = 'event-card';
 
       let timeLabel = '';

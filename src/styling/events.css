@@ -43,7 +43,7 @@ section {
 .kalender__box {
   width: 360px;
   aspect-ratio: 1;
-  background-color: #ffd1c2;
+  background-color: var(--colour_salmon_main);
   border-radius: 22px;
   align-content: center;
 }
@@ -75,7 +75,7 @@ section {
 }
 
 .kalender__header button:hover {
-  background-color: var(--colour_salmon);
+  background-color: var(--colour_salmon_main);
 }
 
 .kalender__month-label {
@@ -104,7 +104,7 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #f7f2ec;
+  background-color: var(--colour_beige_main);
   font-size: 6px;
   border-radius: 4px;
   cursor: pointer;
@@ -116,12 +116,12 @@ section {
 }
 
 .kalender__day:not(.kalender__day--empty):hover {
-  background-color: var(--colour_salmon);
+  background-color: var(--colour_salmon_main);
 }
 
 /* Days in week 44 are highlighted */
 .kalender__day--week44 {
-  background-color: var(--colour_orange);
+  background-color: var(--colour_orange_main);
 }
 
 /* Today gets an outline */
@@ -132,7 +132,7 @@ section {
 
 /* Selected day */
 .kalender__day--selected {
-  background-color: var(--colour_blue);
+  background-color: var(--colour_light-blue_main);
   color: #fff;
 }
 
@@ -156,6 +156,7 @@ section {
 
 .event-card {
   display: flex;
+  text-decoration: none;
   flex-direction: row;
   border-radius: 22px;
   overflow: hidden;
@@ -187,7 +188,7 @@ section {
 
 .event-card__body {
   flex: 1;
-  background-color: #ffd1c2;
+  background-color: var(--colour_salmon_main);
   padding: 14px 16px;
   display: flex;
   flex-direction: column;
@@ -202,14 +203,16 @@ section {
   font-size: 24px;
   font-weight: 500;
   line-height: 60px;
-  color: var(--colour_beige);
+  color: var(--colour_beige_main);
 }
 
 .event-card__location {
   font-size: 12px;
+  color: black;
 }
 
 .event-card__time {
   font-size: 12px;
   text-align: right;
+  color: black;
 }
