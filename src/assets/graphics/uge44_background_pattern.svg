@@ -17,13 +17,13 @@
     <g
        id="g2"
        transform="matrix(0.68896354,0,0,0.68896354,2.2768449,21.236789)"
-       style="fill:#ffc5b2;fill-opacity:1;stroke-width:1.45146">
+       style="fill:#ffd9cc;fill-opacity:1;stroke-width:1.45146">
       <path
-         style="fill:#ffc5b2;fill-opacity:1;stroke-width:7.37339;stroke-miterlimit:4.5;paint-order:stroke fill markers"
+         style="fill:#ffd9cc;fill-opacity:1;stroke-width:7.37339;stroke-miterlimit:4.5;paint-order:stroke fill markers"
          id="path1"
          d="M 55.092979,55.936272 C 55.086571,61.77007 48.163417,66.122876 39.39666,66.130506 33.303645,65.579577 24.388969,62.270024 24.370506,56.397545 24.903079,50.200586 30.98116,45.664142 40.108025,46.32294 c 6.108468,0.762997 14.991363,3.779533 14.984954,9.613332 z" />
       <path
-         style="fill:#ffc5b2;fill-opacity:1;stroke-width:7.37339;stroke-miterlimit:4.5;paint-order:stroke fill markers"
+         style="fill:#ffd9cc;fill-opacity:1;stroke-width:7.37339;stroke-miterlimit:4.5;paint-order:stroke fill markers"
          d="m 24.818481,66.854965 c 0,0 4.334722,-3.182009 5.700357,-7.629709 l 5.904986,2.923259 c 1.085327,3.97077 -11.605343,4.70645 -11.605343,4.70645 z"
          id="path2" />
     </g>
@@ -34,13 +34,13 @@
     <g
        id="g31"
        transform="matrix(0.68896354,0,0,0.68896354,2.2768449,21.236789)"
-       style="fill:#ffc5b2;fill-opacity:1;stroke-width:1.45146">
+       style="fill:#ffd9cc;fill-opacity:1;stroke-width:1.45146">
       <path
-         style="fill:#ffc5b2;fill-opacity:1;stroke-width:7.37339;stroke-miterlimit:4.5;paint-order:stroke fill markers"
+         style="fill:#ffd9cc;fill-opacity:1;stroke-width:7.37339;stroke-miterlimit:4.5;paint-order:stroke fill markers"
          id="path30"
          d="M 55.092979,55.936272 C 55.086571,61.77007 48.163417,66.122876 39.39666,66.130506 33.303645,65.579577 24.388969,62.270024 24.370506,56.397545 24.903079,50.200586 30.98116,45.664142 40.108025,46.32294 c 6.108468,0.762997 14.991363,3.779533 14.984954,9.613332 z" />
       <path
-         style="fill:#ffc5b2;fill-opacity:1;stroke-width:7.37339;stroke-miterlimit:4.5;paint-order:stroke fill markers"
+         style="fill:#ffd9cc;fill-opacity:1;stroke-width:7.37339;stroke-miterlimit:4.5;paint-order:stroke fill markers"
          d="m 24.818481,66.854965 c 0,0 4.334722,-3.182009 5.700357,-7.629709 l 5.904986,2.923259 c 1.085327,3.97077 -11.605343,4.70645 -11.605343,4.70645 z"
          id="path31" />
     </g>

@@ -57,4 +57,10 @@ html {
     font-weight: 700;
     color: #000;
   }
+  .decorative {
+    font-family: "Playfair Display";
+    font-size: 80px;
+    font-weight: 100;
+    color: #fff;
+  }
 }
