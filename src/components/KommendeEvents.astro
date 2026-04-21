@@ -1,56 +1,49 @@
+---
+const url = "https://lrakcsmpnaswxsvnuhhg.supabase.co/rest/v1/uge44events";
+const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxyYWtjc21wbmFzd3hzdm51aGhnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYyOTMxOTksImV4cCI6MjA5MTg2OTE5OX0.mqBbh4_zaPE1R-9IwUox3hln9OLr-Hhz9uWgOM-LVwE";
+
+const options = {
+  headers: {
+    apikey: key,
+  },
+};
+
+const response = await fetch(url, options);
+const allEvents = await response.json();
+const frontpageEvents = allEvents;
+---
+
 <section class="kommende-events">
   <h2>Kommende Events</h2>
+
   <div class="events-grid">
-    <div class="event-card">
-      <div class="event-image"></div>
-      <h3>Funebarium</h3>
-      <p>En udstilling om dagen</p>
-    </div>
+    {
+      frontpageEvents.map((item: any) => (
+        <a href={`/events/${item.id}`} class="event-card">
+          {item.image && (
+            <div
+              class="event-image"
+              style={{
+                backgroundImage: `url(${item.image})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+            />
+          )}
+          {!item.image && <div class="event-image" />}
 
-    <div class="event-card">
-      <div class="event-image"></div>
-      <h3>Funebarium</h3>
-      <p>En udstilling om dagen</p>
-    </div>
+          <h3>{item.name}</h3>
 
-    <div class="event-card">
-      <div class="event-image"></div>
-      <h3>Funebarium</h3>
-      <p>En udstilling om dagen</p>
-    </div>
+          <p>{item.date ? new Date(item.date).toLocaleDateString("da-DK") : "Dato mangler"}</p>
 
-    <div class="event-card">
-      <div class="event-image"></div>
-      <h3>Funebarium</h3>
-      <p>En udstilling om dagen</p>
-    </div>
-
-    <div class="event-card">
-      <div class="event-image"></div>
-      <h3>Funebarium</h3>
-      <p>En udstilling om dagen</p>
-    </div>
-
-    <div class="event-card">
-      <div class="event-image"></div>
-      <h3>Funebarium</h3>
-      <p>En udstilling om dagen</p>
-    </div>
-
-    <div class="event-card">
-      <div class="event-image"></div>
-      <h3>Funebarium</h3>
-      <p>En udstilling om dagen</p>
-    </div>
-
-    <div class="event-card">
-      <div class="event-image"></div>
-      <h3>Funebarium</h3>
-      <p>En udstilling om dagen</p>
-    </div>
+          <p>{item.location || "Sted mangler"}</p>
+        </a>
+      ))
+    }
   </div>
+
   <div class="center-button">
-    <a href="/events" class="btn btn-primary">Se alle arrangementer</a>
+    <a href="/events" class="btn btn-primary"> Se alle arrangementer </a>
   </div>
 </section>
 
@@ -83,10 +76,10 @@
     text-align: center;
     background-color: var(--colour_salmon_2);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
   }
 
   .event-image {
-    background-color: #ccc;
     aspect-ratio: 1/1;
     border-radius: 0.5rem;
     margin-bottom: 1rem;
@@ -96,6 +89,14 @@
     font-family: "Comfortaa", sans-serif;
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
+    text-decoration: none;
+    color: black;
+  }
+
+  .event-card p {
+    font-family: "Comfortaa", sans-serif;
+    text-decoration: none;
+    color: black;
   }
 
   .center-button {
@@ -105,7 +106,7 @@
 
   .btn-primary {
     background: var(--colour_dark-blue_main);
-    color: white;
+    color: var(--colour_beige_main);
     font-weight: bold;
     padding: 0.75rem 1.5rem;
     border-radius: 2rem;
