@@ -1,0 +1,85 @@
+---
+import '../styling/singleview.css';
+import '../styling/custom.css';
+import '../styling/general.css';
+import Page from '../layout/page.astro';
+import BigImage from '../components/big_image.astro';
+import EventText from '../components/event_text.astro';
+import LilImage from '../components/lil_image.astro';
+
+type EventRow = {
+  name: string;
+  description?: string;
+  date?: string;
+  location?: string;
+  image?: string;
+  big_image?: string;
+};
+
+export async function getStaticPaths() {
+  const url = "https://lrakcsmpnaswxsvnuhhg.supabase.co/rest/v1/uge44events";
+  const key =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxyYWtjc21wbmFzd3hzdm51aGhnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYyOTMxOTksImV4cCI6MjA5MTg2OTE5OX0.mqBbh4_zaPE1R-9IwUox3hln9OLr-Hhz9uWgOM-LVwE";
+
+  const res = await fetch(`${url}?select=name`, {
+    headers: { apikey: key },
+  });
+
+  const rows: EventRow[] = await res.json();
+
+  if (!Array.isArray(rows)) return [];
+
+  return rows.map((row) => ({
+    params: { name: encodeURIComponent(row.name) },
+  }));
+}
+
+const url = "https://lrakcsmpnaswxsvnuhhg.supabase.co/rest/v1/uge44events";
+const key =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxyYWtjc21wbmFzd3hzdm51aGhnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYyOTMxOTksImV4cCI6MjA5MTg2OTE5OX0.mqBbh4_zaPE1R-9IwUox3hln9OLr-Hhz9uWgOM-LVwE";
+
+const { name } = Astro.params;
+
+const res = await fetch(
+  `${url}?name=eq.${encodeURIComponent(name)}&select=*&limit=1`,
+  { headers: { apikey: key } }
+);
+
+const rows: EventRow[] = await res.json();
+const event = Array.isArray(rows) && rows.length > 0 ? rows[0] : null;
+---
+
+<Page>
+  <main>
+    <div class="event-page">
+      {event ? (
+        <>
+          <BigImage
+            src={event.big_image}
+            alt={event.name}
+            initial={(event.name ?? 'E')[0].toUpperCase()}
+          />
+
+          <div class="event-bottom">
+            <EventText
+              name={event.name}
+              description={event.description}
+              date={event.date}
+              location={event.location}
+            />
+
+            <LilImage
+              src={event.image}
+              alt={event.name}
+            />
+          </div>
+        </>
+      ) : (
+        <div class="event-empty">
+          <h2>Ingen begivenhed fundet</h2>
+          <p>Vi kunne ikke finde denne begivenhed.</p>
+        </div>
+      )}
+    </div>
+  </main>
+</Page>

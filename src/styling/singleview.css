@@ -1,0 +1,15 @@
+.event-bottom {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  align-items: end;
+}
+@media (max-width: 540px) {
+  .event-bottom {
+    grid-template-columns: 1fr;
+  }
+
+  .side-image {
+    display: none;
+  }
+}

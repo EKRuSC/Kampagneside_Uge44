@@ -1,0 +1,102 @@
+---
+
+interface Props {
+  name: string;
+  description?: string;
+  date?: string;
+  location?: string;
+  
+}
+ 
+const { name, description, date, location, } = Astro.props;
+ 
+const formatted = new Date(date + 'T00:00:00').toLocaleDateString('da-DK', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+---
+ 
+<div class="bubble-card">
+  {location && <p class="bubble-card__label">{location}</p>}
+  <h1 class="bubble-card__title">{name}</h1>
+  {description && <p class="bubble-card__desc">{description}</p>}
+  <div class="bubble-card__footer">
+    <span class="bubble-card__date">{formatted}</span>
+    <a href={`/events/${name}`} class="bubble-card__cta">se mere</a>
+  </div>
+</div>
+ 
+<style>
+.bubble-card{
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  justify-content: space-between;
+  height: 80%;
+  background-color: var(--colour_salmon_main);
+  padding: 1.5rem;
+  border-radius: 2rem;
+
+}
+ 
+ 
+.bubble-card__label {
+  font-family: "Comfortaa";
+  font-weight: 600;
+  font-size: .68rem;
+  letter-spacing: .18em;
+
+  text-transform: uppercase;
+  opacity: .65;
+  margin-bottom: .3rem;
+}
+ 
+.bubble-card__title {
+  font-family: "Comfortaa";
+  color: var(--colour_beige_main);
+  font-size: 1.5rem;
+  font-weight: 300;
+  letter-spacing: .08em;
+  line-height: 1.15;
+  margin-bottom: .9rem;
+}
+ 
+.bubble-card__desc {
+  font-family: "Comfortaa";
+  font-size: .83rem;
+  line-height: 1.7;
+  color: black;
+  margin-bottom: 1.4rem;
+}
+ 
+.bubble-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem;
+  flex-wrap: wrap;
+}
+ 
+.bubble-card__date {
+  font-family: "Comfortaa";
+  font-size: 1.15rem;
+  font-weight: 400;
+}
+ 
+.bubble-card__cta {
+  display: inline-block;
+  background: var(--colour_light-blue_main);
+  color: #fff;
+  font-family: "Comfortaa";
+  font-size: .75rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: .6rem 1.4rem;
+  border-radius: 2rem;
+  transition: opacity .2s;
+
+}
+ 
+.bubble-card__cta:hover { opacity: .82; }
+</style>
