@@ -11,7 +11,11 @@ body {
   display: grid;
   grid-template-rows: auto 1fr auto;
   /*|STYLING|*/
-  background-color: var(--colour_beige);
+  background-color: var(--colour_salmon_2);
+  background-image: url(../assets/graphics/uge44_background_pattern.svg);
+  background-repeat: space;
+  background-position-y: 8rlh;
+  background-size: 100%;
 }
 
 header {
@@ -30,7 +34,7 @@ footer {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   /*|STYLING|*/
-  background-color: var(--colour_blue);
+  background-color: var(--colour_dark-blue_main);
   color: #fff;
 }
 

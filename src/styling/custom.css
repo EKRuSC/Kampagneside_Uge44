@@ -1,9 +1,36 @@
 html {
   /*----------+----------|COLOURS|----------+----------*/
-  --colour_blue: #15e;
-  --colour_salmon: #fcb;
-  --colour_beige: #fee;
-  --colour_orange: #f60;
+  /*----------|Dark Blue|----------*/
+  --colour_dark-blue_-2: #001680;
+  --colour_dark-blue_-1: #001a99;
+  --colour_dark-blue_main: #001fb2;
+  --colour_dark-blue_1: #0022cc;
+  --colour_dark-blue_2: #0027e5;
+  /*----------|Light Blue|----------*/
+  --colour_light-blue_main: #05f;
+  --colour_light-blue_1: #37f;
+  --colour_light-blue_2: #69f;
+  --colour_light-blue_3: #9bf;
+  --colour_light-blue_4: #cdf;
+  /*----------|Orange|----------*/
+  --colour_orange_-2: #993200;
+  --colour_orange_-1: #cc4300;
+  --colour_orange_main: #f50;
+  --colour_orange_1: #ff7733;
+  --colour_orange_2: #ff9966;
+  /*----------|Salmon|----------*/
+  --colour_salmon_-2: #cc8167;
+  --colour_salmon_-1: #e5a089;
+  --colour_salmon_main: #ffc5b2;
+  --colour_salmon_1: #ffd9cc;
+  --colour_salmon_2: #ffece5;
+  /*----------|Beige|----------*/
+  --colour_beige_-4: #999189;
+  --colour_beige_-3: #b2a9a0;
+  --colour_beige_-2: #ccc2b7;
+  --colour_beige_-1: #e5dace;
+  --colour_beige_main: #fff2e5;
+
   /*----------+----------|TEXT STYLING|----------+----------*/
   /*----------|ROOT TEXT-STYLE|----------*/
   font-family: Arial, Helvetica, sans-serif;
@@ -23,5 +50,11 @@ html {
     font-family: "Comfortaa";
     font-size: 24px;
     font-weight: 500;
+  }
+  .nav_button_p {
+    font-family: "Comfortaa";
+    font-size: 20px;
+    font-weight: 700;
+    color: #000;
   }
 }
