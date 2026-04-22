@@ -1,0 +1,116 @@
+---
+const url = "https://lrakcsmpnaswxsvnuhhg.supabase.co/rest/v1/uge44events?order=date.asc";
+const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxyYWtjc21wbmFzd3hzdm51aGhnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYyOTMxOTksImV4cCI6MjA5MTg2OTE5OX0.mqBbh4_zaPE1R-9IwUox3hln9OLr-Hhz9uWgOM-LVwE";
+
+const options = {
+  headers: {
+    apikey: key,
+  },
+};
+
+const response = await fetch(url, options);
+const allEvents = await response.json();
+const frontpageEvents = allEvents.slice(0, 3);
+---
+
+<section class="kommende-events">
+  <h2>Kommende Events</h2>
+
+  <div class="events-grid">
+    {
+      frontpageEvents.map((item: any) => (
+        <a href={`/${encodeURIComponent(item.name)}`} class="event-card">
+          {item.image && (
+            <div
+              class="event-image"
+              style={{
+                backgroundImage: `url(${item.image})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+            />
+          )}
+          {!item.image && <div class="event-image" />}
+
+          <h3>{item.name}</h3>
+
+          <p>{item.date ? new Date(item.date).toLocaleDateString("da-DK") : "Dato mangler"}</p>
+
+          <p>{item.location || "Sted mangler"}</p>
+        </a>
+      ))
+    }
+  </div>
+
+  <div class="center-button">
+    <a href="/events" class="btn btn-primary"> Se alle arrangementer </a>
+  </div>
+</section>
+
+<style>
+  .kommende-events {
+    padding: 2rem 1rem;
+  }
+
+  .kommende-events h2 {
+    font-family: "Comfortaa", sans-serif;
+    font-size: 40px;
+    font-weight: 300;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .events-grid {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .event-card {
+    border-radius: 1rem;
+    padding: 1rem;
+    width: 280px;
+    text-align: center;
+    background-color: var(--colour_salmon_2);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+  }
+
+  .event-image {
+    aspect-ratio: 1/1;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .event-card h3 {
+    font-family: "Comfortaa", sans-serif;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    text-decoration: none;
+    color: black;
+  }
+
+  .event-card p {
+    font-family: "Comfortaa", sans-serif;
+    text-decoration: none;
+    color: black;
+  }
+
+  .center-button {
+    text-align: center;
+    margin-top: 2rem;
+  }
+
+  .btn-primary {
+    background: var(--colour_dark-blue_main);
+    color: var(--colour_beige_main);
+    font-weight: bold;
+    padding: 0.75rem 1.5rem;
+    border-radius: 2rem;
+    text-decoration: none;
+    display: inline-block;
+  }
+</style>

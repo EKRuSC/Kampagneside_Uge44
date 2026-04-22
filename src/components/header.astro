@@ -1,22 +1,56 @@
+---
+import { Image } from "astro:assets";
+import Logo from "../assets/graphics/uge44_logo.svg";
+---
+
 <header>
   <nav>
-    <a class="nav_button" href=""><p class="nav_button">Events</p></a>
-    <a href=""><div class="logo_wrapper"><div class="logo"><p class="temp_p">LOGO</p></div></div></a>
-    <a class="nav_button" href=""><p class="nav_button">Info</p></a>
+    <a class="nav_button" href="events"><p class="nav_button_p">Events</p></a>
+    <a id="logo_wrapper" href="/"><Image id="logo" src={Logo} alt="Logo" /></a>
+    <a class="nav_button" href="info"><p class="nav_button_p">Info</p></a>
   </nav>
 </header>
 
-<!--+----------+----------+----------+----------+----------+----------+-->
-
 <style>
-  nav {
+  #logo_wrapper {
+    min-height: 5rlh;
     height: 100%;
-    padding: 1rlh;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    width: fit-content;
+    display: flex;
+    #logo {
+      height: 100%;
+      width: auto;
+    }
   }
+  #logo_wrapper:hover {
+    scale: 1.05;
+  }
+  #logo_wrapper:active {
+    scale: 1;
+  }
+
   a {
     justify-self: center;
     align-self: center;
+  }
+  .nav_button {
+    min-width: 34%;
+    padding: 1rlh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*|STYLING|*/
+    text-decoration: none;
+    background-color: var(--colour_salmon_main);
+    border-radius: 2rlh;
+  }
+  .nav_button:hover {
+    cursor: pointer;
+    scale: 1.05;
+    outline: 2px solid var(--colour_orange_2);
+  }
+  .nav_button:active {
+    scale: 1;
+    background-color: var(--colour_salmon_-1);
   }
 </style>

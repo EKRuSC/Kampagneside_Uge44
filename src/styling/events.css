@@ -1,0 +1,218 @@
+/* ---------- PAGE LAYOUT ---------- */
+
+main {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  align-items: start;
+}
+
+h1 {
+  grid-column: span 2;
+}
+
+section {
+  height: 100%;
+  width: 100%;
+}
+
+@media (max-width: 800px) {
+  main {
+    width: 80vw;
+    grid-template-columns: 1fr;
+    justify-self: center;
+    justify-content: center;
+  }
+  h1 {
+    grid-column: span 1;
+  }
+  section:nth-of-type(2) {
+    order: -1;
+  }
+  .event-card {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    border-radius: 22px;
+    overflow: hidden;
+    height: 110px;
+  }
+}
+
+/* ---------- KALENDER COMPONENT ---------- */
+
+.kalender__box {
+  width: 360px;
+  aspect-ratio: 1;
+  background-color: var(--colour_salmon_main);
+  border-radius: 22px;
+  align-content: center;
+}
+
+.kalender {
+  width: 300px;
+  aspect-ratio: 1;
+  justify-self: center;
+
+  padding: 1rlh;
+  background-color: #fff;
+  border-radius: 22px;
+}
+
+.kalender__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.kalender__header button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.kalender__header button:hover {
+  background-color: var(--colour_salmon_main);
+}
+
+.kalender__month-label {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.kalender__grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+
+.kalender__day-names span {
+  width: 50%;
+  text-align: center;
+  font-size: 10px;
+  padding: 2px 0 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.5;
+}
+
+.kalender__day {
+  aspect-ratio: 1; /* square cells */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--colour_beige_main);
+  font-size: 6px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.1s;
+}
+
+.kalender__day--empty {
+  cursor: default;
+}
+
+.kalender__day:not(.kalender__day--empty):hover {
+  background-color: var(--colour_salmon_main);
+}
+
+/* Days in week 44 are highlighted */
+.kalender__day--week44 {
+  background-color: var(--colour_orange_main);
+}
+
+/* Today gets an outline */
+.kalender__day--today {
+  outline: 1px solid currentColor;
+  outline-offset: -2px;
+}
+
+/* Selected day */
+.kalender__day--selected {
+  background-color: var(--colour_light-blue_main);
+  color: #fff;
+}
+
+/* ---------- EVENT LIST COMPONENT ---------- */
+
+.event-list {
+  padding: 1rlh;
+}
+
+.event-list__placeholder,
+.event-list__empty {
+  opacity: 0.5;
+  font-size: 14px;
+}
+
+.event-list__heading {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 1rlh;
+}
+
+.event-card {
+  display: flex;
+  text-decoration: none;
+  flex-direction: row;
+  border-radius: 22px;
+  overflow: hidden;
+  height: 110px;
+  margin-right: 20%;
+}
+.event-card:hover {
+  filter: saturate(0.05);
+}
+
+.event-card__visual {
+  width: 38%;
+  flex-shrink: 0;
+  background-color: #2a4a6b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.event-card__initial {
+  font-size: 52px;
+  font-weight: 700;
+  color: grey;
+  line-height: 1;
+  user-select: none;
+}
+
+.event-card__body {
+  flex: 1;
+  background-color: var(--colour_salmon_main);
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  position: relative;
+  overflow: hidden;
+}
+
+.event-card__title {
+  font-family: "Comfortaa";
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 60px;
+  color: var(--colour_beige_main);
+}
+
+.event-card__location {
+  font-size: 12px;
+  color: black;
+}
+
+.event-card__time {
+  font-size: 12px;
+  text-align: right;
+  color: black;
+}

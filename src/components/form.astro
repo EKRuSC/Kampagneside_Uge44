@@ -1,0 +1,117 @@
+<section>
+  <h1>Tilmelding</h1>
+  <form>
+    <div class="form_question" id="fq1">
+      <label for="event_title">Titel</label>
+      <input type="text" name="event_title" id="event_title" required />
+    </div>
+    <div class="form_question" id="fq2">
+      <label for="event_date">Dato</label>
+      <input type="text" name="event_date" id="event_date" required />
+    </div>
+    <div class="form_question" id="fq3">
+      <label for="event_desc">Beskrivelse</label>
+      <input type="text" name="event_desc" id="event_desc" />
+    </div>
+    <div class="form_question" id="fq4">
+      <label for="event_contact">Mail</label>
+      <input type="text" name="event_contact" id="event_contact" required />
+    </div>
+  </form>
+  <button>Tilmeld</button>
+</section>
+
+<style>
+  section {
+    width: 75%;
+    margin: 0 5vw;
+    padding: 2rlh;
+    justify-self: center;
+    display: flex;
+    flex-direction: column;
+    gap: 1rlh;
+    align-items: center;
+    /*|STYLING|*/
+    border-radius: 2rlh;
+    background-color: var(--colour_salmon_-1);
+    background-image: url(../assets/graphics/uge44_speechbubble_plain.svg);
+    background-blend-mode: multiply;
+    background-repeat: no-repeat;
+    background-size: 90%;
+    background-position: center;
+    h1 {
+      color: var(--colour_beige_main);
+      text-align: center;
+    }
+  }
+  form {
+    width: 75%;
+    padding: 1rlh;
+    display: flex;
+    flex-direction: column;
+    gap: 1rlh;
+    /*|STYLING|*/
+    border-radius: 2rlh;
+    background-color: var(--colour_beige_-1);
+  }
+  div {
+    display: flex;
+    flex-direction: row;
+    gap: 1rlh;
+    label {
+      width: 25%;
+      margin-top: 1rlh;
+      text-align: end;
+      /*|STYLING|*/
+      font-size: 20px;
+    }
+    input {
+      height: 3rlh;
+      width: 100%;
+      padding: 1rlh;
+      /*|STYLING|*/
+      border: none;
+      border-radius: 2rlh;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 18px;
+    }
+  }
+  #fq3 {
+    input {
+      height: 12rlh;
+    }
+  }
+
+  button {
+    padding: 1rlh 2rlh;
+    align-self: end;
+    margin-right: 12.5%;
+    /*|STYLING|*/
+    border: none;
+    border-radius: 2rlh;
+    font-family: "Comfortaa";
+    font-size: 25px;
+    font-weight: 700;
+    background-color: var(--colour_dark-blue_main);
+    color: var(--colour_beige_main);
+  }
+
+  @media screen and (width <=1000px) {
+    section {
+      width: 100%;
+      form {
+        width: 100%;
+        div {
+          flex-direction: column;
+          label {
+            text-align: start;
+          }
+        }
+      }
+      button {
+        margin-right: 0;
+        align-self: center;
+      }
+    }
+  }
+</style>

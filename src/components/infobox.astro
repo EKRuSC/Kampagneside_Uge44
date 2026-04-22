@@ -1,0 +1,52 @@
+<section>
+  <div class="infobox">
+    <p class="decorative">Landsforeningen Liv&Død</p>
+    <h1>Om os</h1>
+    <p>Landsforeningen Liv&Død arbejder for at starte den gode samtale og nedbryde tabuet om døden.</p>
+  </div>
+</section>
+
+<style>
+  section {
+    padding: 0 5vw;
+  }
+  .infobox {
+    width: 100%;
+    padding: 3rlh;
+    justify-self: center;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 2rlh;
+    /*|STYLING|*/
+    border-radius: 2rlh;
+    background-color: var(--colour_salmon_main);
+    background-image: url(../assets/graphics/uge44_speechbubble_plain.svg);
+    background-size: 75%;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  .decorative {
+    margin-bottom: 2rlh;
+  }
+  p:last-of-type {
+    font-family: "Comfortaa";
+    font-size: 40px;
+    font-weight: 300;
+  }
+
+  @media screen and (width<=1000px) {
+    .infobox {
+      padding: calc(0.5rlh + 5vw);
+      gap: calc(1rlh + 2vw);
+      p,
+      .decorative,
+      h1 {
+        font-size: calc(70% + 4vw);
+      }
+      .decorative {
+        margin-bottom: 1rlh;
+      }
+    }
+  }
+</style>

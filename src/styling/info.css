@@ -1,0 +1,9 @@
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+section:first-of-type {
+  margin-bottom: 3rlh;
+}

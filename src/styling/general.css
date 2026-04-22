@@ -1,0 +1,46 @@
+/*----------|STYLING RESET|----------*/
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+/*----------+----------+----------*/
+
+body {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  /*|STYLING|*/
+  background-color: var(--colour_salmon_2);
+  background-image: url(../assets/graphics/uge44_background_pattern.svg);
+  background-repeat: space;
+  background-position-y: 8rlh;
+  background-size: 100%;
+}
+
+header {
+  padding: 1rlh 5vw;
+  /*|STYLING|*/
+  background-color: var(--colour_salmon);
+
+  nav {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+footer {
+  padding: 2rlh 5vw;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  /*|STYLING|*/
+  background-color: var(--colour_dark-blue_main);
+  color: #fff;
+}
+
+main {
+  margin: 1rlh 5vw;
+  margin-bottom: 4rlh;
+  padding: 1rlh;
+  gap: 2rlh;
+}

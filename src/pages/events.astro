@@ -1,7 +1,41 @@
 ---
+import "../styling/general.css"
+import "../styling/custom.css";
+import "../styling/events.css";
 import Page from "../layout/page.astro";
+import Kalender from "../components/kalender.astro";
+import EventList from "../components/eventList.astro";
+
+const url = "https://lrakcsmpnaswxsvnuhhg.supabase.co/rest/v1/uge44events";
+const key =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxyYWtjc21wbmFzd3hzdm51aGhnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYyOTMxOTksImV4cCI6MjA5MTg2OTE5OX0.mqBbh4_zaPE1R-9IwUox3hln9OLr-Hhz9uWgOM-LVwE";
+
+const options = {
+  headers: {
+    apikey: key,
+  },
+};
+
+const supaReq = await fetch(url, options);
+const supaData = await supaReq.json();
+
+console.log("supaData", supaData);
 ---
 
 <Page>
-  <h1>Events</h1>
+  <main>
+    <h1>Events</h1>
+
+    <section id="event_cards">
+      <EventList/>
+    </section>
+
+    <section id="calender">
+      <Kalender defaultMonth={9}/>
+    </section>
+
+  </main>
 </Page>
+
+<style>
+ 

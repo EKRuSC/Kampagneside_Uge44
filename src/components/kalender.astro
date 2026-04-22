@@ -1,0 +1,128 @@
+---
+
+interface Props {
+  defaultYear?: number;
+  defaultMonth?: number; // 0 = January, 12 = December
+}
+
+const { defaultYear = 2026, defaultMonth = 9 } = Astro.props;
+---
+<div class="kalender__box">
+
+
+<div class="kalender">
+
+  <!-- Month / Year header with navigation arrows -->
+  <div class="kalender__header">
+    <button id="prev-month" aria-label="Previous month">&#8592;</button>
+    <button id="next-month" aria-label="Next month">&#8594;</button>
+    <span id="month-label" class="kalender__month-label"></span>
+  </div>
+
+  <!-- Day-of-week labels: Mon–Sun -->
+  <div class="kalender__grid kalender__day-names">
+    <span>Mo</span>
+    <span>Tu</span>
+    <span>We</span>
+    <span>Th</span>
+    <span>Fr</span>
+    <span>Sa</span>
+    <span>Su</span>
+  </div>
+
+  <!-- Day boxes are injected here by JS -->
+  <div class="kalender__grid" id="kalender-days"></div>
+
+</div>
+</div>
+
+
+<script define:vars={{ defaultYear, defaultMonth }}>
+
+  let currentYear  = defaultYear;
+  let currentMonth = defaultMonth;
+
+  // --- Get ISO week number (week 1 = week with first Thursday) ---
+  function getISOWeek(date) {
+    const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+    d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay() || 7));
+    const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+    return Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
+  }
+
+  // --- Format date as YYYY-MM-DD ---
+  function toDateString(year, month, day) {
+    const mm = String(month + 1).padStart(2, '0');
+    const dd = String(day).padStart(2, '0');
+    return `${year}-${mm}-${dd}`;
+  }
+
+  // --- Render the calendar grid for a given month ---
+  function renderCalendar(year, month) {
+    const label = document.getElementById('month-label');
+    const grid  = document.getElementById('kalender-days');
+
+    label.textContent = new Date(year, month, 1)
+      .toLocaleString('default', { month: 'long', year: 'numeric' });
+
+    grid.innerHTML = '';
+
+    // Monday-first offset (JS getDay: 0=Sun, we want 0=Mon)
+    const firstDay    = new Date(year, month, 1).getDay();
+    const startOffset = (firstDay === 0) ? 6 : firstDay - 1;
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+    const today    = new Date();
+    const todayStr = toDateString(today.getFullYear(), today.getMonth(), today.getDate());
+
+    // Empty placeholder cells before the 1st
+    for (let i = 0; i < startOffset; i++) {
+      const empty = document.createElement('div');
+      empty.className = 'kalender__day kalender__day--empty';
+      grid.appendChild(empty);
+    }
+
+    // One cell per day
+    for (let day = 1; day <= daysInMonth; day++) {
+      const dateStr = toDateString(year, month, day);
+      const weekNum = getISOWeek(new Date(year, month, day));
+
+      const cell = document.createElement('div');
+      cell.className = 'kalender__day';
+      cell.textContent = day;
+      cell.dataset.date = dateStr;
+
+      if (weekNum === 44)       cell.classList.add('kalender__day--week44');
+      if (dateStr === todayStr) cell.classList.add('kalender__day--today');
+
+      cell.addEventListener('click', () => {
+        document.querySelectorAll('.kalender__day--selected')
+          .forEach(el => el.classList.remove('kalender__day--selected'));
+        cell.classList.add('kalender__day--selected');
+
+        // Signal to EventList that a day was picked
+        window.dispatchEvent(new CustomEvent('day-selected', {
+          detail: { date: dateStr }
+        }));
+      });
+
+      grid.appendChild(cell);
+    }
+  }
+
+  document.getElementById('prev-month').addEventListener('click', () => {
+    currentMonth--;
+    if (currentMonth < 0) { currentMonth = 11; currentYear--; }
+    renderCalendar(currentYear, currentMonth);
+  });
+
+  document.getElementById('next-month').addEventListener('click', () => {
+    currentMonth++;
+    if (currentMonth > 11) { currentMonth = 0; currentYear++; }
+    renderCalendar(currentYear, currentMonth);
+  });
+
+  renderCalendar(currentYear, currentMonth);
+
+</script>
+

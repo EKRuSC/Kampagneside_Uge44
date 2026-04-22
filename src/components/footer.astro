@@ -1,23 +1,35 @@
-<footer>
-  <div>Liv&Død Info</div>
-  <div class="logo"><p class="temp_p">LOGO</p></div>
-</footer>
+---
+import { Image } from "astro:assets";
+import LogoBlue from "../assets/graphics/uge44_logo_blue.svg";
+---
 
-<!--+----------+----------+----------+----------+----------+----------+-->
+<footer>
+  <p class="decorative">Liv&Død Info</p>
+  <div class="img_wrapper"><Image src={LogoBlue} alt="Logo" /></div>
+</footer>
 
 <style>
   footer {
-    height: 6lh;
-    display: flex;
-    flex-direction: row;
-    background-color: blue;
-    color: white;
+    gap: 4rlh;
   }
-  div {
+  p {
+    margin: 1rlh 0;
+  }
+  .img_wrapper {
     height: 100%;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    img {
+      height: 100%;
+      width: auto;
+    }
+  }
+
+  @media screen and (width <=1000px) {
+    .decorative {
+      font-size: calc(70% + 4vw);
+    }
   }
 </style>

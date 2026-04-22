@@ -1,0 +1,108 @@
+---
+
+
+const url = "https://lrakcsmpnaswxsvnuhhg.supabase.co/rest/v1/uge44events";
+const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxyYWtjc21wbmFzd3hzdm51aGhnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYyOTMxOTksImV4cCI6MjA5MTg2OTE5OX0.mqBbh4_zaPE1R-9IwUox3hln9OLr-Hhz9uWgOM-LVwE";
+
+const supaReq  = await fetch(`${url}?select=*&order=date.asc`, {
+  headers: { apikey: key },
+});
+const allEvents = await supaReq.json();
+
+interface SupabaseEvent {
+  id: string;
+  date: string;
+  name: string;
+  start_time?: string;
+  end_time?: string;
+  location?: string;
+  description?: string;
+  image?: string;  
+}
+
+const events: SupabaseEvent[] = Array.isArray(allEvents) ? allEvents : [];
+
+---
+
+<div class="event-list">
+
+  <p class="event-list__placeholder" id="event-placeholder">
+    Select a day to see events
+  </p>
+
+  <div id="event-content" hidden>
+    <h2 id="event-date-heading" class="event-list__heading"></h2>
+    <div id="event-items"></div>
+  </div>
+
+</div>
+
+
+<script define:vars={{ events }}>
+
+  window.addEventListener('day-selected', (e) => {
+    showEventsForDate(e.detail.date);
+  });
+
+  function showEventsForDate(date) {
+    const placeholder    = document.getElementById('event-placeholder');
+    const content        = document.getElementById('event-content');
+    const heading        = document.getElementById('event-date-heading');
+    const itemsContainer = document.getElementById('event-items');
+
+    if (!placeholder || !content || !heading || !itemsContainer) return;
+
+    heading.textContent = new Date(date + 'T00:00:00').toLocaleDateString('default', {
+      weekday: 'long',
+      day:     'numeric',
+      month:   'long',
+      year:    'numeric',
+    });
+
+    placeholder.hidden = true;
+    content.hidden     = false;
+
+    const dayEvents = events.filter((ev) => ev.date === date);
+    renderEvents(dayEvents, itemsContainer);
+  }
+
+  function renderEvents(dayEvents, container) {
+    if (dayEvents.length === 0) {
+      container.innerHTML = '<p class="event-list__empty">No events on this day.</p>';
+      return;
+    }
+
+
+
+
+    container.innerHTML = '';
+
+     dayEvents.forEach((ev) => {
+       const card = document.createElement('a');
+      card.href = `/${encodeURIComponent(ev.name)}`;
+      card.className = 'event-card';
+
+      let timeLabel = '';
+      if (ev.start_time) {
+        timeLabel = ev.start_time.slice(0, 5);
+        if (ev.end_time) timeLabel += ' – ' + ev.end_time.slice(0, 5);
+      }
+
+ card.innerHTML = `
+  <div class="event-card__visual" ${ev.image 
+    ? `style="background-image: url('${ev.image}'); background-size: cover; background-position: center;"` 
+    : ''}>
+    ${!ev.image ? `<span class="event-card__initial">${(ev.name ?? 'E')[0].toUpperCase()}</span>` : ''}
+  </div>
+  <div class="event-card__body">
+    <span class="event-card__title">${ev.name ?? 'Untitled event'}</span>
+    ${ev.location ? `<span class="event-card__location">${ev.location}</span>` : ''}
+    ${timeLabel ? `<span class="event-card__time">${timeLabel}</span>` : ''}
+  </div>
+`;
+
+      container.appendChild(card);
+    });
+  }
+
+</script>
