@@ -19,7 +19,7 @@ const frontpageEvents = allEvents.slice(0, 3);
   <div class="events-grid">
     {
       frontpageEvents.map((item: any) => (
-        <a href={`/events/${item.id}`} class="event-card">
+        <a href={`/${encodeURIComponent(item.name)}`} class="event-card">
           {item.image && (
             <div
               class="event-image"
